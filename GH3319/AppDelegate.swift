@@ -9,6 +9,14 @@
 import UIKit
 import RealmSwift
 
+class Account: Object {
+    dynamic var server: Server?
+}
+
+class Server: Object {
+    let services = List<Service>()
+}
+
 class Service: Object {
     dynamic var id = 0
     dynamic var displayName = ""
