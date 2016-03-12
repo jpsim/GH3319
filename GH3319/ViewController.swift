@@ -47,7 +47,6 @@ class TableViewDataSource<O: Object>: NSObject, UITableViewDataSource {
         self.identifier = identifier
         self.mappingBlock = mappingBlock
     }
-
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (useIndex && data.count > 0) ? 1 : data.count
     }
@@ -97,6 +96,11 @@ class TableViewDataSource<O: Object>: NSObject, UITableViewDataSource {
         return data.count - 1
     }
 
+// I had to comment out this function because UITableViewDelegate doesn't have a `canEditRow` method
+//    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        return tableView.delegate?.canEditRow(tableView, indexPath: indexPath) ?? false
+//    }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let item = data[(useIndex) ? indexPath.section : indexPath.row]
         if let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? CustomCellBase, mapper = mappingBlock {
@@ -104,7 +108,7 @@ class TableViewDataSource<O: Object>: NSObject, UITableViewDataSource {
             mapper(cell: cell, item: item)
             return cell
         }
-        let cell = CustomCellBase(style: .Value2, reuseIdentifier: identifier)
+        let cell = CustomCellBase(style: UITableViewCellStyle.Value2, reuseIdentifier: identifier)
         cell.textLabel?.text = "Unable To Load Cell Data"
         return cell
     }
@@ -118,14 +122,16 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
-        let data = try! Realm().objects(Service)
-        tableData = TableViewDataSource(data: data, reuseIdentifier: "\(CellWithBadge.self)") { cell, item in
+        let account = try! Realm().objects(Account).first
+        let services = account?.server?.services.filter("installed = true").sorted("displayName")
+        tableData = TableViewDataSource<Service>(data: services!, reuseIdentifier: "CellWithBadge") { cell, item in
             self.configureCell(cell as! CellWithBadge, item: item as! Service)
         }
         tableData.useIndex = true
         tableData.indexKey = "displayName"
+        
         tableView.dataSource = tableData
-        token = data.addNotificationBlock { [unowned self] _, _ in
+        token = services!.addNotificationBlock { [unowned self] _, _ in
             self.tableView.reloadData()
         }
     }

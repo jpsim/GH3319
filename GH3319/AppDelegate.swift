@@ -20,6 +20,7 @@ class Server: Object {
 class Service: Object {
     dynamic var id = 0
     dynamic var displayName = ""
+    dynamic var installed = true
 
     override static func indexedProperties() -> [String] {
         return [
@@ -46,31 +47,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             do {
                 try realm.write {
-                    realm.create(Service.self, value: [0, "Apache SpamAssassin™"])
-                    realm.create(Service.self, value: [1, "Apache Web Server"])
-                    realm.create(Service.self, value: [2, "cPanel Daemon"])
-                    realm.create(Service.self, value: [3, "cPanel DAV Daemon"])
-                    realm.create(Service.self, value: [4, "cPanel DNS (Domain Name System) Admin Cache"])
-                    realm.create(Service.self, value: [5, "cPanel Greylisting Daemon"])
-                    realm.create(Service.self, value: [6, "cPanel Log and Bandwidth Processor"])
-                    realm.create(Service.self, value: [7, "cPHulk Daemon"])
-                    realm.create(Service.self, value: [8, "Cron Daemon"])
-                    realm.create(Service.self, value: [9, "DNS (Domain Name System) Server"])
-                    realm.create(Service.self, value: [10, "Exim Mail Server"])
-                    realm.create(Service.self, value: [11, "Exim Mail Server (on another port)"])
-                    realm.create(Service.self, value: [12, "FTP (File Transfer Protocol) Server"])
-                    realm.create(Service.self, value: [13, "IMAP (Internet Mail Access Protocol) Server"])
-                    realm.create(Service.self, value: [14, "IP (Internet Protocol) Aliases"])
-                    realm.create(Service.self, value: [15, "Mailman"])
-                    realm.create(Service.self, value: [16, "MySQL Server"])
-                    realm.create(Service.self, value: [17, "Name Service Cache Daemon"])
-                    realm.create(Service.self, value: [18, "Passive OS (Operating System) Fingerprinting Daemon"])
-                    realm.create(Service.self, value: [19, "PHP-FPM service for cPanel Daemons"])
-                    realm.create(Service.self, value: [20, "POP3 (Post Office Protocol 3) Server"])
-                    realm.create(Service.self, value: [21, "rsyslog System Logger Daemon"])
-                    realm.create(Service.self, value: [22, "SSH (Secure Shell) Daemon"])
-                    realm.create(Service.self, value: [23, "TailWatch Daemon"])
-                    realm.create(Service.self, value: [24, "TaskQueue Processor"])
+                    let serviceNames = [
+                        "Apache SpamAssassin™",
+                        "Apache Web Server",
+                        "cPanel Daemon",
+                        "cPanel DAV Daemon",
+                        "cPanel DNS (Domain Name System) Admin Cache",
+                        "cPanel Greylisting Daemon",
+                        "cPanel Log and Bandwidth Processor",
+                        "cPHulk Daemon",
+                        "Cron Daemon",
+                        "DNS (Domain Name System) Server",
+                        "Exim Mail Server",
+                        "Exim Mail Server (on another port)",
+                        "FTP (File Transfer Protocol) Server",
+                        "IMAP (Internet Mail Access Protocol) Server",
+                        "IP (Internet Protocol) Aliases",
+                        "Mailman",
+                        "MySQL Server",
+                        "Name Service Cache Daemon",
+                        "Passive OS (Operating System) Fingerprinting Daemon",
+                        "PHP-FPM service for cPanel Daemons",
+                        "POP3 (Post Office Protocol 3) Server",
+                        "rsyslog System Logger Daemon",
+                        "SSH (Secure Shell) Daemon",
+                        "TailWatch Daemon",
+                        "TaskQueue Processor"
+                    ]
+                    let account = Account()
+                    account.server = Server()
+                    account.server!.services.appendContentsOf(serviceNames.enumerate().map { id, displayName in
+                        let service = Service()
+                        service.id = id
+                        service.displayName = displayName
+                        return service
+                    })
+                    realm.add(account)
                 }
             } catch {
                 print("error writing to Realm instance: \(error)")
