@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BAAB82FAB540C95442C9CE43 /* Pods_GH3319.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB263DADB837B41613C2DD73 /* Pods_GH3319.framework */; };
 		E8E080631C93A9FC003A278D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E080621C93A9FC003A278D /* AppDelegate.swift */; };
 		E8E080651C93A9FC003A278D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E080641C93A9FC003A278D /* ViewController.swift */; };
 		E8E080681C93A9FC003A278D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8E080661C93A9FC003A278D /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51373E88A82F36BA01AC5312 /* Pods-GH3319.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GH3319.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GH3319/Pods-GH3319.debug.xcconfig"; sourceTree = "<group>"; };
+		D5A98E47EB1FFAE1CA7C0158 /* Pods-GH3319.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GH3319.release.xcconfig"; path = "Pods/Target Support Files/Pods-GH3319/Pods-GH3319.release.xcconfig"; sourceTree = "<group>"; };
 		E8E0805F1C93A9FC003A278D /* GH3319.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GH3319.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E080621C93A9FC003A278D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8E080641C93A9FC003A278D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		E8E080691C93A9FC003A278D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8E0806C1C93A9FC003A278D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8E0806E1C93A9FC003A278D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB263DADB837B41613C2DD73 /* Pods_GH3319.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GH3319.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAAB82FAB540C95442C9CE43 /* Pods_GH3319.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7BE4B3EA1A39C53902275571 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				51373E88A82F36BA01AC5312 /* Pods-GH3319.debug.xcconfig */,
+				D5A98E47EB1FFAE1CA7C0158 /* Pods-GH3319.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8D5C261A439579768D7349F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB263DADB837B41613C2DD73 /* Pods_GH3319.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E8E080561C93A9FC003A278D = {
 			isa = PBXGroup;
 			children = (
 				E8E080611C93A9FC003A278D /* GH3319 */,
 				E8E080601C93A9FC003A278D /* Products */,
+				7BE4B3EA1A39C53902275571 /* Pods */,
+				8D5C261A439579768D7349F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8E080711C93A9FC003A278D /* Build configuration list for PBXNativeTarget "GH3319" */;
 			buildPhases = (
+				9A67C9A58916123C0A9D1CA7 /* Check Pods Manifest.lock */,
 				E8E0805B1C93A9FC003A278D /* Sources */,
 				E8E0805C1C93A9FC003A278D /* Frameworks */,
 				E8E0805D1C93A9FC003A278D /* Resources */,
+				FBE6AE2925D586F0B43E601C /* Embed Pods Frameworks */,
+				8C93F5536E01778C25143360 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8C93F5536E01778C25143360 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GH3319/Pods-GH3319-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A67C9A58916123C0A9D1CA7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FBE6AE2925D586F0B43E601C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GH3319/Pods-GH3319-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E8E0805B1C93A9FC003A278D /* Sources */ = {
@@ -245,6 +320,7 @@
 		};
 		E8E080721C93A9FC003A278D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51373E88A82F36BA01AC5312 /* Pods-GH3319.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GH3319/Info.plist;
@@ -256,6 +332,7 @@
 		};
 		E8E080731C93A9FC003A278D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5A98E47EB1FFAE1CA7C0158 /* Pods-GH3319.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GH3319/Info.plist;
@@ -284,6 +361,7 @@
 				E8E080731C93A9FC003A278D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
